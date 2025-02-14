@@ -14,6 +14,11 @@ const pastelYellow = chalk.hex("#fdfd96");
 const pastelPink = chalk.hex("#ffd1dc");
 const pastelTeal = chalk.hex("#b2f9fc");
 
+function maintainColor(text, colorFn) {
+  const parts = text.split(/(\s+)/);
+  return parts.map(part => colorFn(part)).join('');
+}
+
 const allowedCategories = [
   9, 10, 11, 12, 13, 14, 17, 18, 19, 20, 21, 24, 25, 26, 27, 28, 30, 31, 32,
 ];
@@ -63,20 +68,20 @@ async function fetchTrivia(
       formattedQuestions.forEach((formattedQuestion) => {
         let output = "";
         output += pastelTeal("Question:\n");
-        output += pastelBlue(`${formattedQuestion.question}\n\n`);
+        
+        output += maintainColor(formattedQuestion.question, pastelYellow) + '\n\n';
 
         if (copyToClipboard) {
-          output += pastelYellow("(Copying question to clipboard...)\n\n");
+          output += pastelBlue("(Copying question to clipboard...)\n\n");
           clipboardy.writeSync(formattedQuestion.question);
         }
 
         output += pastelTeal("Answers:\n");
         formattedQuestion.answers.forEach((answer, i) => {
-          if (answer.startsWith("* ")) {
-            output += pastelGreen(`  ${i + 1}. ${answer}\n`);
-          } else {
-            output += pastelRed(`  ${i + 1}. ${answer}\n`);
-          }
+          const isCorrect = answer.startsWith("* ");
+          const colorFn = isCorrect ? pastelGreen : pastelRed;
+          const numberedAnswer = `  ${i + 1}. ${answer}`;
+          output += maintainColor(numberedAnswer, colorFn) + '\n';
         });
 
         console.log(
