@@ -17,7 +17,7 @@ Just run:
 
 ```bash
 
-llmtest
+llmtrivia
 
 ```
 
@@ -35,7 +35,7 @@ llmtest
 
 ```bash
 
-llmtest -c -type=boolean
+llmtrivia -c -type=boolean
 
 ```  
 
