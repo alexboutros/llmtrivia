@@ -1,6 +1,6 @@
 {
   "name": "opentdb-llm-tester",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "main": "trivia.js",
   "scripts": {},
   "keywords": [
