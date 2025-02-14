@@ -1,0 +1,31 @@
+{
+  "name": "opentdb-llm-tester",
+  "version": "1.0.3",
+  "main": "trivia.js",
+  "scripts": {},
+  "keywords": [
+    "trivia",
+    "opentdb",
+    "questions",
+    "llm"
+  ],
+  "author": "Alex Boutros",
+  "license": "MIT",
+  "description": "Grab a single question from OTDB and output a question to give to a LLM for testing",
+  "dependencies": {
+    "axios": "^1.7.9",
+    "boxen": "^8.0.1",
+    "chalk": "^5.4.1",
+    "clipboardy": "^4.0.0",
+    "he": "^1.2.0",
+    "ora": "^8.2.0"
+  },
+  "bin": {
+    "llmtrivia": "trivia.js"
+  },
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alexboutros/llmtrivia"
+  }
+}
